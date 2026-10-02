@@ -57,25 +57,25 @@ Chương trình hiện thực toàn bộ **19 tùy chọn** theo đúng mô tả
 
 | Tùy chọn | Mô tả theo NetBSD Manual | Trạng thái |
 | :---: | :--- | :---: |
-| `-A` | Liệt kê tất cả các mục ngoại trừ `.` và `..`. | **Hoàn thành** |
-| `-a` | Liệt kê tất cả các mục trong thư mục, bao gồm cả file ẩn (bắt đầu bằng dấu `.`). | **Hoàn thành** |
-| `-c` | Sử dụng thời gian thay đổi trạng thái file (`ctime`) thay vì thời gian sửa đổi (`mtime`) khi sắp xếp (`-t`) hoặc in (`-l`). Ghi đè `-u`. | **Hoàn thành** |
-| `-d` | Xem thư mục như file thông thường (không liệt kê nội dung bên trong). Ghi đè `-R`. | **Hoàn thành** |
-| `-F` | Thêm ký tự chỉ định loại file ngay sau tên: `/` (thư mục), `*` (file thực thi), `@` (symlink), `=` (socket), `\|` (FIFO). | **Hoàn thành** |
-| `-f` | Xuất kết quả không qua sắp xếp (unsorted), tự động kích hoạt `-a`. | **Hoàn thành** |
-| `-h` | Hiển thị kích thước file và số block ở dạng dễ đọc cho con người (B, K, M, G, T). Ghi đè `-k`. | **Hoàn thành** |
-| `-i` | In số inode (file serial number) trước mỗi mục. | **Hoàn thành** |
-| `-k` | Báo cáo kích thước và khối tính theo Kilobytes (1024 bytes) cho tùy chọn `-s`. Cờ bên phải cùng giữa `-k` và `-h` sẽ có hiệu lực. | **Hoàn thành** |
-| `-l` | Hiển thị định dạng dài chi tiết: chế độ file (permissions), số hard links, chủ sở hữu (owner), nhóm (group), kích thước, ngày giờ chỉnh sửa, tên file (và target nếu là symlink). | **Hoàn thành** |
-| `-n` | Tương tự `-l`, nhưng hiển thị UID và GID dưới dạng số thay vì tra cứu tên owner/group. Ghi đè `-l`. | **Hoàn thành** |
-| `-q` | Ép buộc in các ký tự không in được (non-printable) thành dấu `?` (mặc định khi xuất ra terminal). Ghi đè `-w`. | **Hoàn thành** |
-| `-R` | Duyệt đệ quy tất cả các thư mục con gặp phải. Ghi đè `-d`. | **Hoàn thành** |
-| `-r` | Đảo ngược thứ tự sắp xếp (ngược bảng chữ cái, hoặc file cũ nhất / nhỏ nhất lên đầu). | **Hoàn thành** |
-| `-S` | Sắp xếp theo kích thước file, file lớn nhất lên đầu. | **Hoàn thành** |
-| `-s` | Hiển thị số lượng khối hệ thống tệp tin (filesystem blocks) thực tế mà file chiếm dụng (đơn vị 512 bytes hoặc giá trị biến môi trường `BLOCKSIZE`). Khi xuất ra terminal, in dòng `total <sum>` trước danh sách. | **Hoàn thành** |
-| `-t` | Sắp xếp theo thời gian sửa đổi gần nhất lên trước (nếu kết hợp `-c` dùng ctime, `-u` dùng atime). | **Hoàn thành** |
-| `-u` | Sử dụng thời gian truy cập gần nhất (`atime`) thay vì mtime cho việc sắp xếp (`-t`) hoặc in (`-l`). Ghi đè `-c`. | **Hoàn thành** |
-| `-w` | Ép buộc in nguyên bản (raw) các ký tự không in được (mặc định khi chuyển hướng pipe/file). Ghi đè `-q`. | **Hoàn thành** |
+| `-A` | `[should_include_entry()]` Liệt kê tất cả các mục ngoại trừ `.` và `..`. | **Hoàn thành** |
+| `-a` | `[should_include_entry()]` Liệt kê tất cả các mục trong thư mục, bao gồm cả file ẩn (bắt đầu bằng dấu `.`). | **Hoàn thành** |
+| `-c` | `[entry_create(), sort_entries()]` Sử dụng thời gian thay đổi trạng thái file (`ctime`) thay vì thời gian sửa đổi (`mtime`) khi sắp xếp (`-t`) hoặc in (`-l`). Ghi đè `-u`. | **Hoàn thành** |
+| `-d` | `[list_operands()]` Xem thư mục như file thông thường (không liệt kê nội dung bên trong). Ghi đè `-R`. | **Hoàn thành** |
+| `-F` | `[utils_get_classifier()]` Thêm ký tự chỉ định loại file ngay sau tên: `/` (thư mục), `*` (file thực thi), `@` (symlink), `=` (socket), `\|` (FIFO). | **Hoàn thành** |
+| `-f` | `[options_parse(), sort_entries()]` Xuất kết quả không qua sắp xếp (unsorted), tự động kích hoạt `-a`. | **Hoàn thành** |
+| `-h` | `[utils_humanize_size()]` Hiển thị kích thước file và số block ở dạng dễ đọc cho con người (B, K, M, G, T). Ghi đè `-k`. | **Hoàn thành** |
+| `-i` | `[format_print_entries()]` In số inode (file serial number) trước mỗi mục. | **Hoàn thành** |
+| `-k` | `[entry_create(), format_print_entries()]` Báo cáo kích thước và khối tính theo Kilobytes (1024 bytes) cho tùy chọn `-s`. Cờ bên phải cùng giữa `-k` và `-h` sẽ có hiệu lực. | **Hoàn thành** |
+| `-l` | `[format_print_entries(), utils_format_mode()]` Hiển thị định dạng dài chi tiết: chế độ file (permissions), số hard links, chủ sở hữu (owner), nhóm (group), kích thước, ngày giờ chỉnh sửa, tên file (và target nếu là symlink). | **Hoàn thành** |
+| `-n` | `[entry_create(), format_print_entries()]` Tương tự `-l`, nhưng hiển thị UID và GID dưới dạng số thay vì tra cứu tên owner/group. Ghi đè `-l`. | **Hoàn thành** |
+| `-q` | `[utils_sanitize_name()]` Ép buộc in các ký tự không in được (non-printable) thành dấu `?` (mặc định khi xuất ra terminal). Ghi đè `-w`. | **Hoàn thành** |
+| `-R` | `[list_directory()]` Duyệt đệ quy tất cả các thư mục con gặp phải. Ghi đè `-d`. | **Hoàn thành** |
+| `-r` | `[sort_entries(), entry_cmp()]` Đảo ngược thứ tự sắp xếp (ngược bảng chữ cái, hoặc file cũ nhất / nhỏ nhất lên đầu). | **Hoàn thành** |
+| `-S` | `[sort_entries(), entry_cmp()]` Sắp xếp theo kích thước file, file lớn nhất lên đầu. | **Hoàn thành** |
+| `-s` | `[compat_get_blocks(), format_print_total()]` Hiển thị số lượng khối hệ thống tệp tin (filesystem blocks) thực tế mà file chiếm dụng (đơn vị 512 bytes hoặc giá trị biến môi trường `BLOCKSIZE`). Khi xuất ra terminal, in dòng `total <sum>` trước danh sách. | **Hoàn thành** |
+| `-t` | `[sort_entries(), entry_cmp()]` Sắp xếp theo thời gian sửa đổi gần nhất lên trước (nếu kết hợp `-c` dùng ctime, `-u` dùng atime). | **Hoàn thành** |
+| `-u` | `[entry_create(), sort_entries()]` Sử dụng thời gian truy cập gần nhất (`atime`) thay vì mtime cho việc sắp xếp (`-t`) hoặc in (`-l`). Ghi đè `-c`. | **Hoàn thành** |
+| `-w` | `[utils_sanitize_name()]` Ép buộc in nguyên bản (raw) các ký tự không in được (mặc định khi chuyển hướng pipe/file). Ghi đè `-q`. | **Hoàn thành** |
 
 ### Quy Tắc Ghi Đè (Override Rules) Được Hiện Thực:
 - `-w` và `-q`: Cờ xuất hiện sau cùng trên dòng lệnh sẽ quyết định cách hiển thị ký tự đặc biệt.
@@ -237,26 +237,13 @@ src/
 
 ---
 
-## 7. Hướng Dẫn Đẩy Lên GitHub (Git Submission Instructions)
+## 7. Thông Tin Nộp Bài & Liên Kết GitHub (Submission & Repository Link)
 
-Repository đã được thiết lập với `.gitignore` nhằm loại bỏ hoàn toàn các file nhị phân và object files. Để đẩy dự án lên GitHub cá nhân:
+Dự án đã được lưu trữ và quản lý phiên bản hoàn chỉnh trên GitHub theo đúng quy cách của đề bài:
 
-```bash
-# 1. Khởi tạo kho git (nếu chưa khởi tạo)
-git init
-
-# 2. Thêm tất cả mã nguồn, Makefile, README.md, .gitignore
-git add include/ src/ Makefile .gitignore README.md
-
-# 3. Tạo commit đầu tiên
-git commit -m "Initial commit: complete modular implementation of ls(1) per NetBSD manual"
-
-# 4. Đặt nhánh chính là main
-git branch -M main
-
-# 5. Liên kết với repository trên GitHub của bạn
-git remote add origin https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm.git
-
-# 6. Đẩy code lên GitHub
-git push -u origin main
-```
+- **Họ và tên:** Đàm Văn Nguyên
+- **Mã số sinh viên:** 24IT180
+- **Tên GitHub Repository:** `DamVanNguyen_24IT180_midterm`
+- **Đường dẫn GitHub (Repository URL):** [https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm](https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm)
+- **Nhánh chính (Default Branch):** `main`
+- **Cam kết nộp bài:** Repository đã được cấu hình `.gitignore` chuẩn, không chứa bất kỳ file nhị phân (`ls`, `ls.exe`) hay object file (`*.o`), đầy đủ mã nguồn modular, `Makefile` và báo cáo `README.md`.
