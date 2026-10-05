@@ -51,8 +51,6 @@ Dự án được tổ chức gọn gàng trong các thư mục `include/` (head
 
 ## 3. Bảng Tính Năng & Tùy Chọn Đã Hiện Thực (Feature Matrix)
 
-Chương trình hiện thực toàn bộ **19 tùy chọn** theo đúng mô tả của trang manual `ls [-AacdFfhiklnqRrSstuw] [file ...]`:
-
 | Tùy chọn | Mô tả theo NetBSD Manual | Trạng thái |
 | :---: | :--- | :---: |
 | `-A` | `[should_include_entry()]` Liệt kê tất cả các mục ngoại trừ `.` và `..`. | **Hoàn thành** |
@@ -84,7 +82,7 @@ Chương trình hiện thực toàn bộ **19 tùy chọn** theo đúng mô tả
 
 ---
 
-## 4. Hướng Dẫn Biên Dịch & Chạy Chương Trình
+## 4. Các Bước Biên Dịch & Chạy Chương Trình
 
 ### 4.1. Yêu cầu hệ thống
 - Trình biên dịch C: `gcc` hoặc `clang` hỗ trợ chuẩn C99 trở lên.
@@ -243,4 +241,4 @@ Dự án đã được lưu trữ và quản lý phiên bản hoàn chỉnh trê
 - **Mã số sinh viên:** 24IT180
 - **Đường dẫn GitHub (Repository URL):** [https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm](https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm)
 - **Nhánh chính (Default Branch):** `main`
-- **Cam kết nộp bài:** Repository đã được cấu hình `.gitignore` chuẩn, không chứa bất kỳ file nhị phân (`ls`, `ls.exe`) hay object file (`*.o`), đầy đủ mã nguồn modular, `Makefile` và báo cáo `README.md`.
+- **nội dung bài nộp trên Github :** Repository đã được cấu hình `.gitignore` chuẩn, đầy đủ mã nguồn modular, `Makefile` và báo cáo `README.md`.
