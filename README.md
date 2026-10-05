@@ -1,10 +1,8 @@
 # Midterm Project – Implement ls(1)
 
-**Học phần:** Hệ điều hành (Operating Systems)  
+**Học phần:** Lập trình hệ thống  
 **Sinh viên:** Đàm Văn Nguyên  
 **Mã số sinh viên:** 24IT180  
-**Tài khoản GitHub:** [DVanNguyen](https://github.com/DVanNguyen)  
-**GitHub Repository:** [https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm](https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm)  
 
 ---
 
@@ -243,7 +241,6 @@ Dự án đã được lưu trữ và quản lý phiên bản hoàn chỉnh trê
 
 - **Họ và tên:** Đàm Văn Nguyên
 - **Mã số sinh viên:** 24IT180
-- **Tên GitHub Repository:** `DamVanNguyen_24IT180_midterm`
 - **Đường dẫn GitHub (Repository URL):** [https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm](https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm)
 - **Nhánh chính (Default Branch):** `main`
 - **Cam kết nộp bài:** Repository đã được cấu hình `.gitignore` chuẩn, không chứa bất kỳ file nhị phân (`ls`, `ls.exe`) hay object file (`*.o`), đầy đủ mã nguồn modular, `Makefile` và báo cáo `README.md`.
