@@ -126,7 +126,7 @@ $ ./ls
 Makefile
 README.md
 include
-ls.exe
+ls
 src
 ```
 
@@ -141,7 +141,7 @@ $ ./ls -a
 Makefile
 README.md
 include
-ls.exe
+ls
 src
 ```
 - Cờ `-A` liệt kê file ẩn nhưng loại trừ `.` và `..`:
@@ -152,7 +152,7 @@ $ ./ls -A
 Makefile
 README.md
 include
-ls.exe
+ls
 src
 ```
 
@@ -164,7 +164,7 @@ total 619
 -rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
 -rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
 drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
--rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls
 drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
 ```
 - Cờ `-lh` chuyển kích thước sang đơn vị dễ đọc (B, K, M, G):
@@ -174,7 +174,7 @@ total 310K
 -rw-rw-rw- 1 Nguyen  0  594B Oct  2 16:23 Makefile
 -rw-rw-rw- 1 Nguyen  0   14K Oct  2 16:55 README.md
 drwxrwxrwx 1 Nguyen  0  4.0K Oct  2 16:17 include
--rwxrwxrwx 1 Nguyen  0  287K Oct  7 22:57 ls.exe
+-rwxrwxrwx 1 Nguyen  0  287K Oct  7 22:57 ls
 drwxrwxrwx 1 Nguyen  0  4.0K Oct  7 22:57 src
 ```
 - Cờ `-n` hiển thị UID và GID dạng số:
@@ -184,7 +184,7 @@ total 619
 -rw-rw-rw- 1 0  0     594 Oct  2 16:23 Makefile
 -rw-rw-rw- 1 0  0   13796 Oct  2 16:55 README.md
 drwxrwxrwx 1 0  0    4096 Oct  2 16:17 include
--rwxrwxrwx 1 0  0  293666 Oct  7 22:57 ls.exe
+-rwxrwxrwx 1 0  0  293666 Oct  7 22:57 ls
 drwxrwxrwx 1 0  0    4096 Oct  7 22:57 src
 ```
 
@@ -195,7 +195,7 @@ $ ./ls -i
 0 Makefile
 0 README.md
 0 include
-0 ls.exe
+0 ls
 0 src
 ```
 - In số khối hệ thống tệp chiếm dụng (`-s`):
@@ -204,7 +204,7 @@ $ ./ls -s
   2 Makefile
  27 README.md
   8 include
-574 ls.exe
+574 ls
   8 src
 ```
 - Báo cáo số khối theo đơn vị Kilobytes (`-sk`):
@@ -213,7 +213,7 @@ $ ./ls -sk
   1 Makefile
  14 README.md
   4 include
-287 ls.exe
+287 ls
   4 src
 ```
 - Kết hợp định dạng dài, inode và số block (`-lis`):
@@ -223,7 +223,7 @@ total 619
 0   2 -rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
 0  27 -rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
 0   8 drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
-0 574 -rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+0 574 -rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls
 0   8 drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
 ```
 
@@ -234,7 +234,7 @@ $ ./ls -F
 Makefile
 README.md
 include/
-ls.exe*
+ls*
 src/
 ```
 
@@ -243,7 +243,7 @@ src/
 ```bash
 $ ./ls -lS
 total 619
--rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls
 -rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
 drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
 drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
@@ -253,7 +253,7 @@ drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
 ```bash
 $ ./ls -lt
 total 619
--rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls
 drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
 -rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
 -rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
@@ -264,7 +264,7 @@ drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
 $ ./ls -lr
 total 619
 drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
--rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls
 drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
 -rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
 -rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
@@ -277,7 +277,7 @@ $ ./ls -f
 .git
 .gitignore
 include
-ls.exe
+ls
 Makefile
 README.md
 src
