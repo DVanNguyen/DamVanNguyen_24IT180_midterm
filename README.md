@@ -49,7 +49,7 @@ Dự án được tổ chức gọn gàng trong các thư mục `include/` (head
 
 ---
 
-## 3. Bảng Tính Năng & Tùy Chọn Đã Hiện Thực (Feature Matrix)
+## 3. Bảng Tính Năng & Tùy Chọn Đã Hiện Thực
 
 | Tùy chọn | Mô tả theo NetBSD Manual | Trạng thái |
 | :---: | :--- | :---: |
@@ -82,17 +82,17 @@ Dự án được tổ chức gọn gàng trong các thư mục `include/` (head
 
 ---
 
-## 4. Các Bước Dành Cho Giảng Viên Khi Tải Về Kiểm Thử (Evaluator's Guide)
+## 4. Các Bước Dành Cho Giảng Viên Khi Tải Về Kiểm Thử
 
-Quy trình chi tiết để giảng viên tải bài từ GitHub về và chạy kiểm thử toàn bộ các tính năng:
+Quy trình chi tiết và chạy kiểm thử toàn bộ các tính năng:
 
-### 4.1. Bước 1: Tải mã nguồn từ GitHub (Clone Repository)
+### 4.1. Bước 1: Tải mã nguồn từ GitHub
 ```bash
 git clone https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm.git
 cd DamVanNguyen_24IT180_midterm
 ```
 
-### 4.2. Bước 2: Biên dịch mã nguồn (Build)
+### 4.2. Bước 2: Biên dịch mã nguồn
 Dự án được cấu hình `Makefile` tự động nhận diện môi trường và hỗ trợ cả Linux/macOS lẫn Windows:
 ```bash
 # Trên hệ điều hành Linux / macOS:
@@ -318,7 +318,7 @@ sort.h
 utils.h
 ```
 
-### 5.9. Kiểm thử xử lý lỗi và các trường hợp biên (Robustness)
+### 5.9. Kiểm thử xử lý lỗi và các trường hợp biên
 - Khi gặp tệp không tồn tại: In lỗi ra `stderr`, tiếp tục xử lý các tệp hợp lệ khác và trả về mã thoát lỗi `> 0`:
 ```bash
 $ ./ls file_khong_ton_tai.txt Makefile
