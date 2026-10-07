@@ -82,25 +82,29 @@ Dự án được tổ chức gọn gàng trong các thư mục `include/` (head
 
 ---
 
-## 4. Các Bước Biên Dịch & Chạy Chương Trình
+## 4. Các Bước Dành Cho Giảng Viên Khi Tải Về Kiểm Thử (Evaluator's Guide)
 
-### 4.1. Yêu cầu hệ thống
-- Trình biên dịch C: `gcc` hoặc `clang` hỗ trợ chuẩn C99 trở lên.
-- Công cụ build: `make` (trên Linux/macOS) hoặc `mingw32-make` (trên Windows qua MSYS2/MinGW).
+Quy trình chi tiết để giảng viên tải bài từ GitHub về và chạy kiểm thử toàn bộ các tính năng:
 
-### 4.2. Lệnh biên dịch
-Để biên dịch chương trình với các cờ kiểm tra nghiêm ngặt (`-Wall -Wextra -pedantic -std=c99`):
+### 4.1. Bước 1: Tải mã nguồn từ GitHub (Clone Repository)
 ```bash
-# Trên Linux / macOS:
+git clone https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm.git
+cd DamVanNguyen_24IT180_midterm
+```
+
+### 4.2. Bước 2: Biên dịch mã nguồn (Build)
+Dự án được cấu hình `Makefile` tự động nhận diện môi trường và hỗ trợ cả Linux/macOS lẫn Windows:
+```bash
+# Trên hệ điều hành Linux / macOS:
 make
 
-# Trên Windows (sử dụng MinGW):
+# Trên hệ điều hành Windows (sử dụng MinGW / MSYS2):
 mingw32-make
 ```
-Sau khi biên dịch thành công, file thực thi `ls` (hoặc `ls.exe` trên Windows) sẽ được tạo ra tại thư mục gốc của dự án.
+*Kết quả:* Trình biên dịch tạo file thực thi `./ls` (hoặc `ls.exe` trên Windows) với các cờ kiểm tra nghiêm ngặt `-Wall -Wextra -pedantic -std=c99` mà không phát sinh bất kỳ cảnh báo (warning) hay lỗi nào.
 
-### 4.3. Dọn dẹp bản build
-Để xóa sạch các file đối tượng (`.o`) và file thực thi:
+### 4.3. Bước 3: Dọn dẹp bản build (Clean)
+Khi cần xóa sạch tất cả file đối tượng (`.o`) và file thực thi nhị phân để trả về trạng thái mã nguồn ban đầu:
 ```bash
 # Trên Linux / macOS:
 make clean
@@ -111,125 +115,222 @@ mingw32-make clean
 
 ---
 
-## 5. Ví Dụ Sử Dụng & Kết Quả Chạy Thử Thực Tế
+## 5. Kịch Bản Kiểm Thử & Kết Quả Chạy Thực Tế Đầy Đủ (Test Cases & Outputs)
+
+Dưới đây là tập hợp đầy đủ các lệnh chạy kiểm thử cho từng nhóm tính năng cùng kết quả xuất thực tế của chương trình:
 
 ### 5.1. Liệt kê mặc định (Default Listing)
 Mặc định mỗi tệp hiển thị trên một dòng, được sắp xếp theo thứ tự từ điển:
 ```bash
 $ ./ls
 Makefile
+README.md
 include
+ls.exe
 src
 ```
 
-### 5.2. Liệt kê tất cả file bao gồm file ẩn (`-a` và `-A`)
+### 5.2. Liệt kê file ẩn (`-a` và `-A`)
+- Cờ `-a` liệt kê toàn bộ file ẩn, bao gồm `.` và `..`:
 ```bash
 $ ./ls -a
 .
 ..
+.git
 .gitignore
 Makefile
+README.md
 include
+ls.exe
 src
-
+```
+- Cờ `-A` liệt kê file ẩn nhưng loại trừ `.` và `..`:
+```bash
 $ ./ls -A
+.git
 .gitignore
 Makefile
+README.md
 include
+ls.exe
 src
 ```
 
-### 5.3. Định dạng dài chi tiết (`-l`) kèm dung lượng dễ đọc (`-h`)
-Hiển thị đầy đủ quyền 10 ký tự, số liên kết, owner, group, kích thước căn lề tự động, ngày giờ và tên:
+### 5.3. Định dạng dài chi tiết (`-l`) kết hợp dung lượng dễ đọc (`-h`) và UID/GID số (`-n`)
+- Cờ `-l` hiển thị 10 ký tự quyền (file mode), số links, owner, group, kích thước căn lề, ngày giờ và tên:
+```bash
+$ ./ls -l
+total 619
+-rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
+-rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
+drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
+```
+- Cờ `-lh` chuyển kích thước sang đơn vị dễ đọc (B, K, M, G):
 ```bash
 $ ./ls -lh
-total 296K
--rw-rw-rw- 1 Nguyen  0  591B Oct  2 16:17 Makefile
+total 310K
+-rw-rw-rw- 1 Nguyen  0  594B Oct  2 16:23 Makefile
+-rw-rw-rw- 1 Nguyen  0   14K Oct  2 16:55 README.md
 drwxrwxrwx 1 Nguyen  0  4.0K Oct  2 16:17 include
-drwxrwxrwx 1 Nguyen  0  4.0K Oct  2 16:19 src
+-rwxrwxrwx 1 Nguyen  0  287K Oct  7 22:57 ls.exe
+drwxrwxrwx 1 Nguyen  0  4.0K Oct  7 22:57 src
 ```
-
-### 5.4. Hiển thị dạng số UID/GID (`-n`)
+- Cờ `-n` hiển thị UID và GID dạng số:
 ```bash
 $ ./ls -n
-total 592
--rw-rw-rw- 1 0  0     591 Oct  2 16:17 Makefile
+total 619
+-rw-rw-rw- 1 0  0     594 Oct  2 16:23 Makefile
+-rw-rw-rw- 1 0  0   13796 Oct  2 16:55 README.md
 drwxrwxrwx 1 0  0    4096 Oct  2 16:17 include
-drwxrwxrwx 1 0  0    4096 Oct  2 16:19 src
+-rwxrwxrwx 1 0  0  293666 Oct  7 22:57 ls.exe
+drwxrwxrwx 1 0  0    4096 Oct  7 22:57 src
 ```
 
-### 5.5. Hiển thị Inode (`-i`) và Khối tệp tin (`-s`)
+### 5.4. Hiển thị Inode (`-i`), Khối tệp (`-s`, `-sk`) và kết hợp (`-lis`)
+- In số inode (`-i`):
+```bash
+$ ./ls -i
+0 Makefile
+0 README.md
+0 include
+0 ls.exe
+0 src
+```
+- In số khối hệ thống tệp chiếm dụng (`-s`):
+```bash
+$ ./ls -s
+  2 Makefile
+ 27 README.md
+  8 include
+574 ls.exe
+  8 src
+```
+- Báo cáo số khối theo đơn vị Kilobytes (`-sk`):
+```bash
+$ ./ls -sk
+  1 Makefile
+ 14 README.md
+  4 include
+287 ls.exe
+  4 src
+```
+- Kết hợp định dạng dài, inode và số block (`-lis`):
 ```bash
 $ ./ls -lis
-total 592
-0   2 -rw-rw-rw- 1 Nguyen  0     591 Oct  2 16:17 Makefile
+total 619
+0   2 -rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
+0  27 -rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
 0   8 drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
-0   8 drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:19 src
+0 574 -rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+0   8 drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
 ```
 
-### 5.6. Phân loại loại file với cờ (`-F`)
-Thêm dấu `/` cho thư mục, `*` cho file thực thi:
+### 5.5. Phân loại loại tệp tin với ký hiệu (`-F`)
+Thêm dấu `/` cho thư mục, `*` cho tệp thực thi:
 ```bash
 $ ./ls -F
 Makefile
+README.md
 include/
+ls.exe*
 src/
 ```
 
-### 5.7. Các chế độ sắp xếp (`-S`, `-t`, `-r`)
-- Sắp xếp theo dung lượng giảm dần:
-  ```bash
-  $ ./ls -lS
-  ```
-- Sắp xếp theo thời gian mới nhất:
-  ```bash
-  $ ./ls -lt
-  ```
-- Đảo ngược thứ tự sắp xếp:
-  ```bash
-  $ ./ls -lr
-  ```
+### 5.6. Các chế độ sắp xếp (`-S`, `-t`, `-r`, `-f`)
+- Sắp xếp theo dung lượng giảm dần (`-lS`):
+```bash
+$ ./ls -lS
+total 619
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+-rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
+drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
+drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
+-rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
+```
+- Sắp xếp theo thời gian sửa đổi gần nhất lên đầu (`-lt`):
+```bash
+$ ./ls -lt
+total 619
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
+-rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
+-rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
+drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
+```
+- Đảo ngược thứ tự sắp xếp (`-lr`):
+```bash
+$ ./ls -lr
+total 619
+drwxrwxrwx 1 Nguyen  0    4096 Oct  7 22:57 src
+-rwxrwxrwx 1 Nguyen  0  293666 Oct  7 22:57 ls.exe
+drwxrwxrwx 1 Nguyen  0    4096 Oct  2 16:17 include
+-rw-rw-rw- 1 Nguyen  0   13796 Oct  2 16:55 README.md
+-rw-rw-rw- 1 Nguyen  0     594 Oct  2 16:23 Makefile
+```
+- Xuất dữ liệu không qua sắp xếp (`-f`):
+```bash
+$ ./ls -f
+.
+..
+.git
+.gitignore
+include
+ls.exe
+Makefile
+README.md
+src
+```
 
-### 5.8. Xem thư mục như file (`-d`) và Duyệt đệ quy (`-R`)
-- Liệt kê chính thư mục mà không đi vào trong:
-  ```bash
-  $ ./ls -ld include
-  drwxrwxrwx 1 Nguyen  0  4096 Oct  2 16:17 include
-  ```
-- Duyệt đệ quy toàn bộ cây thư mục con:
-  ```bash
-  $ ./ls -R include
-  include:
-  compat.h
-  entry.h
-  format.h
-  list.h
-  options.h
-  sort.h
-  utils.h
-  ```
+### 5.7. Xem thư mục như file (`-d`) và Duyệt đệ quy (`-R`)
+- Liệt kê thông tin chính thư mục mà không duyệt bên trong (`-d`, `-ld`):
+```bash
+$ ./ls -ld include
+drwxrwxrwx 1 Nguyen  0  4096 Oct  2 16:17 include
+```
+- Duyệt đệ quy toàn bộ cây thư mục con (`-R`):
+```bash
+$ ./ls -R include
+include:
+compat.h
+entry.h
+format.h
+list.h
+options.h
+sort.h
+utils.h
+```
 
----
+### 5.8. Xử lý nhiều đối số (Multiple Operands)
+Hiển thị các tệp không phải thư mục trước, các thư mục hiển thị sau và có in tiêu đề phân cách:
+```bash
+$ ./ls Makefile include
+Makefile
 
-## 6. Xử Lý Các Trường Hợp Đặc Biệt (Edge Cases & Robustness)
+include:
+compat.h
+entry.h
+format.h
+list.h
+options.h
+sort.h
+utils.h
+```
 
-1. **Nhiều đối số (Multiple Operands):**
-   - Tuân thủ quy định NetBSD: Các đối số không phải thư mục (files) luôn được hiển thị trước; các đối số là thư mục được hiển thị sau và có in tiêu đề `dir_name:`.
-   - Giữa các khối thư mục có dấu ngắt dòng cách nhau rõ ràng.
-
-2. **File hoặc thư mục không tồn tại:**
-   - Khi gặp file không tồn tại (ví dụ: `./ls file_that_does_not_exist existing_file`), chương trình in thông báo lỗi chuẩn ra `stderr`:  
-     `ls: file_that_does_not_exist: No such file or directory`  
-   - Chương trình **không bị dừng hay crash** mà tiếp tục xử lý chính xác các file hợp lệ còn lại, và kết thúc với mã thoát lỗi `> 0`.
-
-3. **Tùy chọn không hợp lệ (Unknown Flags):**
-   - Khi người dùng nhập cờ sai (ví dụ: `./ls -z`), chương trình báo lỗi `ls: unknown option -- z`, hiển thị cú pháp sử dụng (`usage`) và thoát với mã lỗi 1.
-
-4. **Ký tự ngăn cách cờ (`--`):**
-   - Hỗ trợ ký tự `--` để kết thúc danh sách cờ, cho phép xử lý an toàn các file có tên bắt đầu bằng dấu gạch ngang (ví dụ: `./ls -- -filename`).
-
-5. **Biến môi trường `BLOCKSIZE`:**
-   - Hỗ trợ đọc biến môi trường `BLOCKSIZE` để điều chỉnh đơn vị khối cho tùy chọn `-s`.
+### 5.9. Kiểm thử xử lý lỗi và các trường hợp biên (Robustness)
+- Khi gặp tệp không tồn tại: In lỗi ra `stderr`, tiếp tục xử lý các tệp hợp lệ khác và trả về mã thoát lỗi `> 0`:
+```bash
+$ ./ls file_khong_ton_tai.txt Makefile
+ls: file_khong_ton_tai.txt: No such file or directory
+Makefile
+```
+- Khi nhập cờ tùy chọn không hợp lệ: Báo lỗi cờ không xác định, hiển thị cú pháp và thoát:
+```bash
+$ ./ls -z
+ls: unknown option -- z
+usage: ls [-AacdFfhiklnqRrSstuw] [file ...]
+```
 
 ---
 
@@ -241,4 +342,4 @@ Dự án đã được lưu trữ và quản lý phiên bản hoàn chỉnh trê
 - **Mã số sinh viên:** 24IT180
 - **Đường dẫn GitHub (Repository URL):** [https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm](https://github.com/DVanNguyen/DamVanNguyen_24IT180_midterm)
 - **Nhánh chính (Default Branch):** `main`
-- **nội dung bài nộp trên Github :** Repository đã được cấu hình `.gitignore` chuẩn, đầy đủ mã nguồn modular, `Makefile` và báo cáo `README.md`.
+- **Nội dung bài nộp trên GitHub:** Repository đã được cấu hình `.gitignore` chuẩn (không chứa bất kỳ file nhị phân `ls`, `ls.exe` hay file `*.o`), đầy đủ mã nguồn modular, `Makefile` và báo cáo `README.md`.
