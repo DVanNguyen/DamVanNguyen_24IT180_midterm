@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Giới Thiệu Tổng Quan (Overview)
+## 1. Giới Thiệu Tổng Quan
 
 Dự án này hiện thực lại công cụ dòng lệnh **`ls(1)`** của hệ điều hành UNIX từ đầu (from scratch) bằng ngôn ngữ C, tuân thủ chặt chẽ đặc tả trong tài liệu **NetBSD 10.1 General Commands Manual**.
 
@@ -19,7 +19,7 @@ Chương trình tương tác trực tiếp với hệ thống tệp tin (filesys
 
 ---
 
-## 2. Kiến Trúc Mã Nguồn (Project Structure)
+## 2. Kiến Trúc Mã Nguồn 
 
 Dự án được tổ chức gọn gàng trong các thư mục `include/` (header files) và `src/` (source files):
 
@@ -82,7 +82,7 @@ Dự án được tổ chức gọn gàng trong các thư mục `include/` (head
 
 ---
 
-## 4. Các Bước Dành Cho Giảng Viên Khi Tải Về Kiểm Thử
+## 4. Các Bước Tải Về Và Kiểm Thử
 
 Quy trình chi tiết và chạy kiểm thử toàn bộ các tính năng:
 
@@ -115,7 +115,7 @@ mingw32-make clean
 
 ---
 
-## 5. Kịch Bản Kiểm Thử & Kết Quả Chạy Thực Tế Đầy Đủ (Test Cases & Outputs)
+## 5. Kịch Bản Kiểm Thử & Kết Quả Chạy Thực Tế Đầy Đủ
 
 Dưới đây là tập hợp đầy đủ các lệnh chạy kiểm thử cho từng nhóm tính năng cùng kết quả xuất thực tế của chương trình:
 
@@ -334,7 +334,7 @@ usage: ls [-AacdFfhiklnqRrSstuw] [file ...]
 
 ---
 
-## 7. Thông Tin Nộp Bài & Liên Kết GitHub (Submission & Repository Link)
+## 7. Thông Tin Nộp Bài & Liên Kết GitHub
 
 Dự án đã được lưu trữ và quản lý phiên bản hoàn chỉnh trên GitHub theo đúng quy cách của đề bài:
 
